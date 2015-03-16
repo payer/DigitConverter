@@ -3,12 +3,26 @@
 <head>
   <title>Digits_en2bd</title>
   <script src="digits_en2bd.js"></script>
+  <script src="jquery-2.1.1.min.js"></script>
 </head>
 
 <body>
+<input type="text" name="digit" id="digit">
+<p id="convert"></p>
  <script type="text/javascript">
- var digit = digits_en2bd(1);
- alert(digit);
+ $("#digit").on('keyup',function(e){
+	var given_number = $("#digit").val();
+	 if($.isNumeric(given_number)){
+		var converted_number = digits_en2bd(given_number);
+		$("#convert").text(converted_number);
+	 }else{
+		alert("number only");
+		$("#digit").val('');
+		$("#convert").val('');
+	 }
+
+ });
+
  </script>
 </body>
 
